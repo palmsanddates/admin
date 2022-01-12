@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './assets/scss/custom.scss';
@@ -19,49 +19,49 @@ function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
 
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    useEffect(() => {
-      onLoad();
-    }, []);
+  useEffect(() => {
+    onLoad();
+  }, []);
 
-    async function onLoad() {
-      try {
-        const token = tokenPayload();
+  async function onLoad() {
+    try {
+      const token = tokenPayload();
 
-        if (Object.keys(token).length) {
-          if (token.exp * 1000 >= Date.now()) {
-            userHasAuthenticated(true);
+      if (Object.keys(token).length) {
+        if (token.exp * 1000 >= Date.now()) {
+          userHasAuthenticated(true);
 
-            setInterval(() => {
-              Auth.logout();
-              navigate('/login');
-
-              userHasAuthenticated(false);
-            }, token.exp * 1000 - Date.now());
-          } else {
+          setInterval(() => {
             Auth.logout();
             navigate('/login');
-          }
+
+            userHasAuthenticated(false);
+          }, token.exp * 1000 - Date.now());
         } else {
-          userHasAuthenticated(false);
+          Auth.logout();
           navigate('/login');
         }
-      } catch (e) {
-        if (e !== 'No current user') {
-          alert(e);
-        }
+      } else {
+        userHasAuthenticated(false);
+        navigate('/login');
       }
-
-      setIsAuthenticating(false);
+    } catch (e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
     }
+
+    setIsAuthenticating(false);
+  }
 
   return (
     <div className="App">
-      <LightNavbar userHasAuthenticated={userHasAuthenticated}></LightNavbar>
       <AppContext.Provider
         value={{ isAuthenticated, userHasAuthenticated, setIsAuthenticating }}
       >
+        <LightNavbar />
         <Routes />
       </AppContext.Provider>
     </div>

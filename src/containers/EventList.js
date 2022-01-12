@@ -19,10 +19,10 @@ export default function EventList() {
     <Container>
       {events &&
         events.map((event) => {
-          const isDisable = new Date(event.start_time) < new Date();
           return (
             <Col
               key={`event-${event._id}`}
+              xl={4}
               lg={5}
               md={7}
               sm={10}
@@ -30,7 +30,7 @@ export default function EventList() {
             >
               <Card className="border-0 event-card shadow text-center">
                 <NavLink className="p-0" to={`/events/${event._id}`}>
-                  <Card.Header className="text-dark">{event.name}</Card.Header>
+                  <Card.Header className="text-dark ">{event.name}</Card.Header>
                   <Card.Body>
                     <Card.Img
                       src={event.flyer_img_url}
@@ -52,10 +52,7 @@ export default function EventList() {
                 <Card.Footer>
                   <Button
                     className="w-100 event-card-button"
-                    disabled={isDisable}
-                  >
-                    {isDisable ? 'Event has Passed' : 'RSVP'}
-                  </Button>
+                  >Edit</Button>
                 </Card.Footer>
               </Card>
             </Col>

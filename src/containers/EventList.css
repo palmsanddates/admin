@@ -1,0 +1,53 @@
+.EventList {
+  height: 82vh;
+}
+.Loading {
+  height: 82vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-container {
+  height: 82vh;
+  width: 100vw;
+  overflow-y: scroll;
+}
+
+.event-card {
+  transition: box-shadow 0.3s;
+}
+
+.event-card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-body {
+  padding: 0;
+  max-height: 65vh;
+  position: relative;
+}
+
+.event-card-img {
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  max-height: 65vh;
+  display: block;
+}
+
+.img-time{
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 5px 8px;
+  opacity: 80%;
+  border-radius: 5px;
+}
+
+.card-img{
+  border-radius: 0;
+}
