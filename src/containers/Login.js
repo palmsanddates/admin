@@ -28,7 +28,7 @@ function Login() {
     try {
       await Auth.login(email, password);
       userHasAuthenticated(true);
-      navigate('/');
+      navigate('/events');
     } catch (e) {
       onError(e);
       setIsLoading(false);

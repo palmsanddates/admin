@@ -14,6 +14,10 @@ class EventService {
     return api.post('/events', newEvent, { headers: authHeader() });
   }
 
+  updateEvent(eventId, updatedEvent) {
+    return api.patch(`/events/${eventId}`, updatedEvent, { headers: authHeader() });
+  }
+
   deleteEvent(eventId) {
     return api.delete(`/events/${eventId}`, { headers: authHeader() });
   }

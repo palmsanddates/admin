@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { BsArrowRepeat } from 'react-icons/bs';
+import { FiRefreshCcw } from 'react-icons/fi';
 
 export default function LoaderButton({
   isLoading,
@@ -14,7 +14,7 @@ export default function LoaderButton({
       className={`LoaderButton ${className}`}
       {...props}
     >
-      {isLoading && <BsArrowRepeat className="spinning" />}
+      {isLoading && <FiRefreshCcw className="spinning" />}
       {props.children}
     </Button>
   );

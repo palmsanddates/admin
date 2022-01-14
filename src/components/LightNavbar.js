@@ -2,9 +2,11 @@ import { Button, Navbar, Container } from 'react-bootstrap';
 import logo from '../Logo.png';
 import Auth from '../services/auth.service';
 import { useAppContext } from '../lib/contextLib';
+import { useNavigate } from 'react-router-dom';
 
 function LightNavbar() {
   const { isAuthenticated, userHasAuthenticated } = useAppContext();
+  let navigate = useNavigate();
 
   async function handleLogout() {
     await Auth.logout();
@@ -15,7 +17,10 @@ function LightNavbar() {
   return (
     <Navbar bg="light" className="shadow-sm">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand
+          onClick={() => navigate('/events')}
+          style={{ cursor: 'pointer' }}
+        >
           <img
             src={logo}
             width="120"
