@@ -1,4 +1,4 @@
-import { Button, Navbar, Container } from 'react-bootstrap';
+import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../Logo.png';
 import Auth from '../services/auth.service';
 import { useAppContext } from '../lib/contextLib';
@@ -33,9 +33,21 @@ function LightNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           {isAuthenticated && (
-            <Button variant="outline-primary" onClick={handleLogout}>
-              Logout
-            </Button>
+            <Nav>
+              <Nav.Link>
+                <Button
+                  variant="outline-primary"
+                  onClick={() => navigate('/events/suggestions')}
+                >
+                  Suggestions
+                </Button>
+              </Nav.Link>
+              <Nav.Link>
+                <Button variant="outline-primary" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </Nav.Link>
+            </Nav>
           )}
         </Navbar.Collapse>
       </Container>

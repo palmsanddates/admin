@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import EventList from './containers/EventList';
 import EventDetail from './containers/EventDetail';
+import EventSuggestions from './containers/EventSuggestions';
 
 import Login from './containers/Login';
 import NotFound from './containers/NotFound';
@@ -19,6 +20,7 @@ export default function RoutesApp() {
         element={isAuthenticated ? <EventList /> : <Navigate to="/login" />}
       ></Route>
       <Route path="/events/:eventId" element={<EventDetail />}></Route>
+      <Route path="/events/suggestions" element={<EventSuggestions />}></Route>
 
       <Route
         path="/login"

@@ -15,11 +15,19 @@ class EventService {
   }
 
   updateEvent(eventId, updatedEvent) {
-    return api.patch(`/events/${eventId}`, updatedEvent, { headers: authHeader() });
+    return api.patch(`/events/${eventId}`, updatedEvent, {
+      headers: authHeader(),
+    });
   }
 
   deleteEvent(eventId) {
     return api.delete(`/events/${eventId}`, { headers: authHeader() });
+  }
+
+  getSuggestions(institutionId) {
+    return api.get(`/events/suggestions/${institutionId}`, {
+      headers: authHeader(),
+    });
   }
 }
 
